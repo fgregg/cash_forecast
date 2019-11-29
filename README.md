@@ -1,4 +1,4 @@
-# cash_forecast
+# Forecast Cash
 Forecast how much Accounts Receivable will be realized in next 30 days (using [Freshbooks](https://www.freshbooks.com/))
 
 ## System requirements
