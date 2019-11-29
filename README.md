@@ -13,7 +13,7 @@ pip install -r requirements
 cp secrets.py.example secrets.py
 ```
 
-Add your secrets to secrets.py. That secrets.py file has instructions.
+Add your secrets to `secrets.py`. The `secrets.py` file has instructions.
 
 ## To run
 ```
