@@ -8,11 +8,14 @@ invoices$paid = as.logical(invoices$paid)
 invoices = invoices[invoices$age != 0,]
 invoices = invoices[invoices$amount != 0,]
 
+# Bigger invoices may be take longer to get paid than smaller
+# invoices, let's capture that with a log scale
+invoices$log_amount = log(invoices$amount)
+
 # This is or starting model. It has a single covariate, size of
 # the invoice. We can make this more sophisticated in the
 # future
-fit = coxph(Surv(age, paid) ~ log(amount), data=invoices)
-
+fit = coxph(Surv(age, paid) ~ log_amount, data=invoices)
 
 # Now we want to predict whether our current outstanding invoices
 # will be paid in the next 30 days. We first create our data frame to
@@ -43,3 +46,5 @@ for (j in 1:100000) {
 pdf(file='expected_realized_cash.pdf')
 hist(runs, main='Realized cash from current Accounts Receivable, 30 days')
 dev.off()
+
+summary(runs)
