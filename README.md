@@ -5,7 +5,7 @@ Forecast how much Accounts Receivable will be realized in next 30 days (using [F
 - Python 3
 - R
 
-You'll also need an Freshbooks account that has sufficiently privileged access to view invoices.
+You'll also need an Freshbooks account that has sufficiently privileges to view invoices.
 
 ## Installation
 ```
