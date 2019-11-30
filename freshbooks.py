@@ -70,13 +70,11 @@ def features(invoices):
 
         if date_paid:
             date_paid=datetime.datetime.strptime(date_paid, '%Y-%m-%d').date()
-            age = (date_paid - date_invoiced).days
             paid = True
         else:
-            age = (today - date_invoiced).days
             paid = False
 
-        yield date_invoiced, date_paid, age, amount, paid
+        yield date_invoiced, date_paid, amount, paid
 
             
 if __name__ == '__main__':
@@ -89,6 +87,6 @@ if __name__ == '__main__':
                                account_id=secrets.ACCOUNT_ID)
 
     writer = csv.writer(sys.stdout)
-    writer.writerow(('invoice_created','invoice_closed','age','amount', 'paid'))
+    writer.writerow(('invoice_created','invoice_closed', 'amount', 'paid'))
     
     writer.writerows(features(client.invoices()))
