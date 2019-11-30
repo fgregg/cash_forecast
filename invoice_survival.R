@@ -34,8 +34,14 @@ invoices$age[invoices$paid == FALSE] = mapply(
 
 # Exclude invoices for 0 dollars, or ones that got paid 
 # immediately. These were not real invoices
-invoices = invoices[invoices$age != 0,]
+invoices = invoices[invoices$age > 1,]
 invoices = invoices[invoices$amount != 0,]
+
+# Get the Kaplan Meier fit
+km_fit = survival::survfit(survival::Surv(age, paid) ~ 1, data=invoices)
+pdf(file='km.pdf')
+plot(km_fit, xlim=c(0, 70), xlab='Business Days')
+dev.off()
 
 # This is or starting model. It has a single covariate, size of
 # the invoice. We can make this more sophisticated in the
