@@ -10,7 +10,7 @@ You'll also need an Freshbooks account that has sufficiently privileges to view 
 ## Installation
 ```
 pip install -r requirements
-R -e 'install.packages("timeDate", repos="http://cran.us.r-project.org")'
+R -e 'install.packages(c("timeDate", "coxme"), repos="http://cran.us.r-project.org")'
 cp secrets.py.example secrets.py
 ```
 
